@@ -1,5 +1,6 @@
 venv
 .dockerignore
+.env
 .gitatttributes
 .gitignore
 docker-compose.yaml

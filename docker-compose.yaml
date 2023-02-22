@@ -6,4 +6,4 @@ services:
     volumes:
       - ./:/cos-archive-restore
     env_file:
-      - ./.env
+      - ./values.env
