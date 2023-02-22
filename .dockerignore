@@ -1,0 +1,9 @@
+venv
+.dockerignore
+.gitatttributes
+.gitignore
+docker-compose.yaml
+Dockerfile
+example*
+logs
+README.md

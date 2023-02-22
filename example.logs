@@ -1,0 +1,90 @@
+2023-02-18 03:14:30,198 - Retreiving oauth token...
+2023-02-18 03:14:30,560 - Oauth token retrieved
+2023-02-18 03:14:30,561 - Listing objects...
+2023-02-18 03:14:32,256 - Object 648/file00 has ben added to the object list
+2023-02-18 03:14:32,257 - Object 648/file01 has ben added to the object list
+2023-02-18 03:14:32,257 - Object 648/file02 has ben added to the object list
+2023-02-18 03:14:32,258 - Object 648/file03 has ben added to the object list
+2023-02-18 03:14:32,258 - Object 648/file04 has ben added to the object list
+2023-02-18 03:14:32,259 - Object 648/file05 has ben added to the object list
+2023-02-18 03:14:32,477 - Object 657/file98 has ben added to the object list
+2023-02-18 03:14:32,477 - Object 657/file99 has ben added to the object list
+
+...
+...
+...
+
+2023-02-18 03:14:32,478 - Object list received. 1000 objects found
+2023-02-18 03:14:32,478 - Object list is truncated. Begining new listing of objects...
+2023-02-18 03:14:33,695 - Object 658/file00 has ben added to the object list
+2023-02-18 03:14:33,696 - Object 658/file01 has ben added to the object list
+2023-02-18 03:14:33,696 - Object 658/file02 has ben added to the object list
+
+...
+...
+...
+
+2023-02-18 03:14:33,749 - Object 659/file99 has ben added to the object list
+2023-02-18 03:14:33,750 - More objects listed. 200 objects found
+2023-02-18 03:14:33,750 - All objects listed. Total objects: 1200
+2023-02-18 03:14:33,750 - Selecting objects...
+2023-02-18 03:14:33,751 - Object 648/file00 - storage class ACCELERATED - last modified date 2023-02-16 selected
+
+...
+...
+...
+
+2023-02-18 03:14:34,031 - Object 659/file99 - storage class ACCELERATED - last modified date 2023-02-16 selected
+2023-02-18 03:14:34,031 - Finished selecting objects. 1200 objects were selected
+2023-02-18 03:14:34,032 - Initiating object restore...
+2023-02-18 03:14:34,033 - Request data assembled.
+b'<RestoreRequest><Days>2</Days><GlacierJobParameters><Tier>ACCELERATED</Tier></GlacierJobParameters></RestoreRequest>'
+2023-02-18 03:14:34,034 - Request data encoded: b'fJvjOvSnQCeKIz/3jx4b6Q=='
+2023-02-18 03:14:34,034 - Restoring object 648/file00
+2023-02-18 03:14:34,937 - Restore request response:
+b''
+2023-02-18 03:14:34,938 - Restoring object 648/file01
+2023-02-18 03:14:35,687 - Restore request response:
+b''
+2023-02-18 03:14:35,688 - Restoring object 648/file02
+2023-02-18 03:14:36,430 - Restore request response:
+b''
+2023-02-18 03:14:36,432 - Restoring object 648/file03
+2023-02-18 03:14:37,160 - Restore request response:
+b''
+2023-02-18 03:14:37,161 - Restoring object 648/file04
+2023-02-18 03:14:37,934 - Restore request response:
+b''
+2023-02-18 03:14:37,935 - Restoring object 648/file05
+2023-02-18 03:14:38,651 - Restore request response:
+b''
+2023-02-18 03:14:38,652 - Restoring object 648/file06
+2023-02-18 03:14:39,440 - Restore request response:
+b''
+2023-02-18 03:14:39,443 - Restoring object 648/file07
+2023-02-18 03:14:40,146 - Restore request response:
+b''
+
+...
+...
+...
+
+2023-02-18 03:26:55,572 - Restoring object 658/file00
+2023-02-18 03:26:56,315 - Restore request response:
+b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>RestoreAlreadyInProgress</Code><Message>Object restore is already in progress</Message><Resource>/cos-vmcabredo-cos-standard-k2r/658/file00</Resource><RequestId>8431424c-85a2-4a44-93ac-6d025e39f8b0</RequestId><httpStatusCode>409</httpStatusCode></Error>'
+2023-02-18 03:26:56,315 - Restoring object 658/file01
+2023-02-18 03:26:57,039 - Restore request response:
+b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>RestoreAlreadyInProgress</Code><Message>Object restore is already in progress</Message><Resource>/cos-vmcabredo-cos-standard-k2r/658/file01</Resource><RequestId>76518e7a-7b25-418d-88df-a4d14f001184</RequestId><httpStatusCode>409</httpStatusCode></Error>'
+2023-02-18 03:26:57,040 - Restoring object 658/file02
+2023-02-18 03:26:57,762 - Restore request response:
+b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>RestoreAlreadyInProgress</Code><Message>Object restore is already in progress</Message><Resource>/cos-vmcabredo-cos-standard-k2r/658/file02</Resource><RequestId>5e414000-939e-4991-9571-fa3ce972e57a</RequestId><httpStatusCode>409</httpStatusCode></Error>'
+2023-02-18 03:26:57,765 - Restoring object 658/file03
+
+...
+...
+...
+
+2023-02-18 03:29:19,730 - Restoring object 659/file99
+2023-02-18 03:29:20,399 - Restore request response:
+b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>RestoreAlreadyInProgress</Code><Message>Object restore is already in progress</Message><Resource>/cos-vmcabredo-cos-standard-k2r/659/file99</Resource><RequestId>d8f85cd6-2491-4dae-bc26-c338fdc15743</RequestId><httpStatusCode>409</httpStatusCode></Error>'
+2023-02-18 03:29:20,399 - All objects restored

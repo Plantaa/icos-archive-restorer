@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  job:
+    build: ./
+    working_dir: /cos-archive-restore
+    volumes:
+      - ./:/cos-archive-restore
+    env_file:
+      - ./.env
