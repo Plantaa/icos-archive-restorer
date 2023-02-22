@@ -5,9 +5,7 @@ import xml.etree.ElementTree as ET
 import logging
 import hashlib
 import base64
-from dotenv import load_dotenv
 
-load_dotenv()
 api_key = os.getenv("API_KEY")
 cos_endpoint = os.getenv("COS_ENDPOINT")
 bucket_name = os.getenv("BUCKET_NAME")
@@ -28,8 +26,14 @@ logging.basicConfig(
 )
 
 def main():
+	print(api_key)
+	print(cos_endpoint)
+	print(bucket_name)
 	logging.info("Retreiving oauth token...")
-	oauth_token = get_oauth_token(oauth_endpoint, api_key)
+	oauth_token_response = get_oauth_token(oauth_endpoint, api_key)
+	print(oauth_token_response)
+	print(oauth_token_response.text)
+	oauth_token = oauth_token_response.json()["access_token"]
 	logging.info("Oauth token retrieved")
 
 	logging.info("Listing objects...")
@@ -60,8 +64,7 @@ def get_oauth_token(oauth_endpoint, api_key):
 		       "response_type": "cloud_iam",
 		       "grant_type": "urn:ibm:params:oauth:grant-type:apikey"}
 	r = requests.post(oauth_endpoint, headers=headers, data=data)
-	oauth_token = r.json()["access_token"]
-	return oauth_token
+	return r
 
 def list_objects(oauth_token, cos_endpoint, bucket_name, params={"list-type": 2}):
 	url = f"https://{cos_endpoint}/{bucket_name}"

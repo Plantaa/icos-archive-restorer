@@ -18,7 +18,7 @@
 
 ## How to use:
 - #### In the \"example.env\" file, change the example values of the configuration variables to your values
-- #### Rename the \"example.env\" file to simply \".env\"
+- #### Rename the \"example.env\" file to \"values.env\"
 ### Running as a container:
 #### Note: This container uses a bind mount to the script's directory, in order to save the \"logs\" file. Check your OS's and Docker's permissions regarding bind mounts in case of errors.
 - #### Run
@@ -28,7 +28,7 @@ docker-compose up
 #### Or:
 ```
 docker build -t <image_name>:<tag> .
-docker run --name <container_name> -d --rm <image-name>:<tag>
+docker run -d --name <container_name> --env-file=values.env -v ./:/cos-archive-restore <image_name>:<tag>
 ```
 ### Running localy:
 - #### Install dependencies
