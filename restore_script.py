@@ -5,13 +5,15 @@ import xml.etree.ElementTree as ET
 import logging
 import hashlib
 import base64
+from dotenv import load_dotenv
 
-api_key = os.getenv("API_KEY")
-cos_endpoint = os.getenv("COS_ENDPOINT")
-bucket_name = os.getenv("BUCKET_NAME")
-days = os.getenv("DAYS")
-date = os.getenv("DATE")
-tier = os.getenv("TIER")
+load_dotenv("values.env")
+api_key = str(os.getenv("API_KEY"))
+cos_endpoint = str(os.getenv("COS_ENDPOINT"))
+bucket_name = str(os.getenv("BUCKET_NAME"))
+days = str(os.getenv("DAYS"))
+date = str(os.getenv("DATE"))
+tier = str(os.getenv("TIER"))
 oauth_endpoint="https://iam.cloud.ibm.com/oidc/token"
 
 logging.root.handlers = []
@@ -26,14 +28,8 @@ logging.basicConfig(
 )
 
 def main():
-	print(api_key)
-	print(cos_endpoint)
-	print(bucket_name)
 	logging.info("Retreiving oauth token...")
-	oauth_token_response = get_oauth_token(oauth_endpoint, api_key)
-	print(oauth_token_response)
-	print(oauth_token_response.text)
-	oauth_token = oauth_token_response.json()["access_token"]
+	oauth_token = get_oauth_token(oauth_endpoint, api_key).json()["access_token"]
 	logging.info("Oauth token retrieved")
 
 	logging.info("Listing objects...")
@@ -105,7 +101,7 @@ def restore_objects(oauth_token, selected_objects, tier, days):
 	restore_request = ET.ElementTree(ET.Element("RestoreRequest")).getroot()
 	ET.SubElement(restore_request, "Days").text = days
 	job_xml_element = ET.SubElement(restore_request, "GlacierJobParameters")
-	ET.SubElement(job_xml_element, "Tier").text = "ACCELERATED"
+	ET.SubElement(job_xml_element, "Tier").text = tier
 	data = ET.tostring(restore_request)
 	logging.info("Request data assembled.\n%s", data)
 	

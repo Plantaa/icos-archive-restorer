@@ -8,3 +8,4 @@ Dockerfile
 example*
 logs
 README.md
+values.env
