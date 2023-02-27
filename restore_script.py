@@ -123,7 +123,7 @@ def assemble_restore_request(oauth_token, tier, days):
 
 def restore_objects(data, headers, selected_objects):
 	for object in selected_objects:
-		object_name = urllib.parse.quote(object["key"])
+		object_name = urllib.parse.quote(object.get("key"))
 		logging.info("Restoring object %s", object_name)
 		response = requests.post(f"https://{cos_endpoint}/{bucket_name}/{object_name}?restore", data=data, headers=headers)
 		logging.info("Restore request response: %s", response.content)
