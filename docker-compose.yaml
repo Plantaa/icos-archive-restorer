@@ -1,9 +1,9 @@
 version: '3.8'
 services:
-  icos-archive-restorer:
+  icos-object-restorer:
     build: ./
-    working_dir: /cos-archive-restore
+    working_dir: /icos-object-restorer
     volumes:
-      - ./:/cos-archive-restore
+      - ./:/icos-object-restorer
     env_file:
       - ./values.env

@@ -1,6 +1,6 @@
 FROM python:alpine
 
-WORKDIR /cos-archive-restore
+WORKDIR /icos-object-restorer
 
 COPY requirements.txt .
 
