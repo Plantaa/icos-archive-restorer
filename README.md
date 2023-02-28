@@ -46,7 +46,7 @@ docker build -t <image_name>:<tag> .
 docker run -d --rm --name <container_name> --env-file=values.env -v ./:/icos-object-restorer <image_name>:<tag>
 ```
 
-### Running localy
+## Running localy
 
 - Install dependencies
 
