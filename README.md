@@ -27,26 +27,26 @@ This is a python script that automates the restoration of all archived objects i
 
 - Edit the \"example.env\" file, replacing the example values with your own.
 - Rename the file to \"values.env\".
-- Run the following instructions:
+- Go through the next instructions.
 
-## Running as a container
+### Running as a container
 
 Note: This container uses a bind mount to the script's directory, in order to save the \"logs\" file. Check your OS's and Docker's permissions regarding bind mounts in case of errors
 
-### Using docker compose
+#### Using docker compose
 
 ```bash
 docker-compose up
 ```
 
-### Using docker run
+#### Using docker run
 
 ```bash
 docker build -t <image_name>:<tag> .
 docker run -d --rm --name <container_name> --env-file=values.env -v ./:/icos-object-restorer <image_name>:<tag>
 ```
 
-## Running localy
+### Running localy
 
 - Install dependencies
 
