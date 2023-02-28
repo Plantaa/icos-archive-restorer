@@ -33,13 +33,13 @@ This is a python script that automates the restoration of all archived objects i
 
 Note: This container uses a bind mount to the script's directory, in order to save the \"logs\" file. Check your OS's and Docker's permissions regarding bind mounts in case of errors
 
-#### Using docker compose
+- #### Using docker compose
 
 ```bash
 docker-compose up
 ```
 
-#### Using docker run
+- #### Using docker run
 
 ```bash
 docker build -t <image_name>:<tag> .
