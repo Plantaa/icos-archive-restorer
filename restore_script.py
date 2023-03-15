@@ -144,7 +144,7 @@ def restore_objects(data, headers, selected_objects):
 		logging.info("Restoring object %s", object_name)
 		try:
 			r = requests.post(restore_endpoint, data=data, headers=headers)
-			if r.status_code == 409: #Client Error: Object already restoring
+			if r.status_code != 200:
 				logging.error("Unable to restore object \"%s\"", object_name)
 				error_code = ET.fromstring(r.text).find("Message").text
 				logging.error(error_code)
