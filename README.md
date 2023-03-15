@@ -21,8 +21,6 @@ This is a python script that automates the restoration of all archived objects i
 
 - ### Lastly, it restores those objects
 
-### You can also get a good view of what the script does, by checking the \"example.logs\" file provided in this repository
-
 ## How to use
 
 - Edit the \"example.env\" file, replacing the example values with your own.
@@ -31,7 +29,7 @@ This is a python script that automates the restoration of all archived objects i
 
 ### Running as a container
 
-Note: This container uses a bind mount to the script's directory, in order to save the \"logs\" file. Check your OS's and Docker's permissions regarding bind mounts in case of errors
+Note: This container uses a bind mount to the script's directory, in order to save the \"log\" file. Check your OS's and Docker's permissions regarding bind mounts in case of errors
 
 - #### Using docker compose
 
