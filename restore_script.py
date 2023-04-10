@@ -14,7 +14,7 @@ cos_endpoint = str(os.getenv("COS_ENDPOINT"))
 bucket_name = str(os.getenv("BUCKET_NAME"))
 days = str(os.getenv("DAYS"))
 date = str(os.getenv("DATE"))
-tier = str(os.getenv("TIER"))
+tier = str(os.getenv("TIER")).upper()
 oauth_endpoint="https://iam.cloud.ibm.com/oidc/token"
 
 
@@ -30,6 +30,7 @@ logging.basicConfig(
 
 
 def main():
+	print(tier)
 	oauth_token = get_oauth_token(oauth_endpoint, api_key).json()["access_token"]
 	objects = list_objects(oauth_token, cos_endpoint, bucket_name)
 	selected_objects = select_objects(objects, date, tier)
