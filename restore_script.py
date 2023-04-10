@@ -105,9 +105,10 @@ def list_objects(oauth_token, cos_endpoint, bucket_name, params={"list-type": 2}
 def select_objects(object_collection, date, tier):
 	logging.info("Selecting objects...")
 	selected_objects = []
+	object_tier = "GLACIER" if tier == "BULK" else "ACCELERATED"
 	
 	for object in object_collection:
-		if object["scl"] == tier and object["lmd"] > date:
+		if object["scl"] == object_tier and object["lmd"] > date:
 			selected_objects.append(object)
 			logging.info("Object %s - storage class %s - last modified date %s selected", object["key"], object["scl"], object["lmd"])
 
