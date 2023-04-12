@@ -30,7 +30,6 @@ logging.basicConfig(
 
 
 def main():
-	print(tier)
 	oauth_token = get_oauth_token(oauth_endpoint, api_key).json()["access_token"]
 	objects = list_objects(oauth_token, cos_endpoint, bucket_name)
 	selected_objects = select_objects(objects, date, tier)
