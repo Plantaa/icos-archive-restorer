@@ -146,10 +146,7 @@ def restore_objects(data, headers, selected_objects):
 		logging.info("Restoring object %s", object_name)
 		try:
 			r = requests.post(restore_endpoint, data=data, headers=headers)
-			if r.status_code != 200:
-				logging.error("Unable to restore object \"%s\"", object_name)
-				error_code = ET.fromstring(r.text).find("Message").text
-				logging.error(error_code)
+			r.raise_for_status()
 		except requests.exceptions.RequestException as e:
 			logging.error("An error has occurred while restoring the object \"%s\"", object_name)
 			logging.error(e)
