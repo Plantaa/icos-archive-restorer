@@ -30,6 +30,7 @@ logging.basicConfig(
 
 
 def main():
+
 	oauth_token = get_oauth_token(oauth_endpoint, api_key).json()["access_token"]
 	objects = list_objects(oauth_token, cos_endpoint, bucket_name)
 	selected_objects = select_objects(objects, date, tier)
@@ -39,6 +40,7 @@ def main():
 
 
 def get_oauth_token(oauth_endpoint, api_key):
+
 	logging.info("Retreiving oauth token...")
 	headers = {"Accept": "application/json",
 		       "Content_Type": "application/x-www-form-urlencoded"}
@@ -57,6 +59,7 @@ def get_oauth_token(oauth_endpoint, api_key):
 
 
 def list_objects(oauth_token, cos_endpoint, bucket_name, params={"list-type": 2}):
+
 	url = f"https://{cos_endpoint}/{bucket_name}"
 	headers = {"Authorization": f"bearer {oauth_token}"}
 	objects = []
@@ -102,6 +105,7 @@ def list_objects(oauth_token, cos_endpoint, bucket_name, params={"list-type": 2}
 
 
 def select_objects(object_collection, date, tier):
+
 	logging.info("Selecting objects...")
 	selected_objects = []
 	object_tier = "GLACIER" if tier == "BULK" else "ACCELERATED"
@@ -116,6 +120,7 @@ def select_objects(object_collection, date, tier):
 
 
 def assemble_restore_request(oauth_token, tier, days):
+
 	logging.info("Assembling object restoration request data, and headers...")
 	restore_request = ET.ElementTree(ET.Element("RestoreRequest")).getroot()
 	ET.SubElement(restore_request, "Days").text = days
@@ -150,6 +155,12 @@ def restore_objects(data, headers, selected_objects):
 			logging.error("An error has occurred while restoring the object \"%s\"", object_name)
 			logging.error(e)
 			logging.error(r.content)
+			if r.status_code == 403:
+				logging.info("Updating Oauth token")
+				data, headers = assemble_restore_request(get_oauth_token(oauth_endpoint, api_key), tier, days)
+				logging.info("Trying to restore object %s again", object_name)
+				r = requests.post(restore_endpoint, data=data, headers=headers)
+				
 		finally:
 			logging.info(r)
 		
