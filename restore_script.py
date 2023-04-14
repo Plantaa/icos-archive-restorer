@@ -1,4 +1,5 @@
 import os
+import time
 import requests
 import urllib.parse
 import xml.etree.ElementTree as ET
@@ -144,6 +145,7 @@ def restore_objects(data, headers, selected_objects):
 
 	logging.info("Initiating object restore...")
 	for object in selected_objects:
+		time.sleep(30)
 		object_name = urllib.parse.quote(object.get("key"))
 		restore_endpoint = f"https://{cos_endpoint}/{bucket_name}/{object_name}?restore"
 
@@ -157,7 +159,8 @@ def restore_objects(data, headers, selected_objects):
 			logging.error(r.content)
 			if r.status_code == 403:
 				logging.info("Updating Oauth token")
-				data, headers = assemble_restore_request(get_oauth_token(oauth_endpoint, api_key), tier, days)
+				new_oauth_token = get_oauth_token(oauth_endpoint, api_key).json()["access_token"]
+				headers["Authorization"] = f"bearer {new_oauth_token}"
 				logging.info("Trying to restore object %s again", object_name)
 				r = requests.post(restore_endpoint, data=data, headers=headers)
 				
