@@ -145,7 +145,6 @@ def restore_objects(data, headers, selected_objects):
 
 	logging.info("Initiating object restore...")
 	for object in selected_objects:
-		time.sleep(30)
 		object_name = urllib.parse.quote(object.get("key"))
 		restore_endpoint = f"https://{cos_endpoint}/{bucket_name}/{object_name}?restore"
 
